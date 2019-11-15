@@ -7,7 +7,7 @@ import (
 	googleCalendar "xcal/internal/google"
 )
 
-var max int64 = 1
+var max int64 = 5
 var truncate *string
 
 func init() {

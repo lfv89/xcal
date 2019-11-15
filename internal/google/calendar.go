@@ -5,12 +5,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	googleCredentials "xcal/config/google"
 	"net/http"
 	"os"
 	"os/exec"
 	"runtime"
 	"time"
+	googleCredentials "xcal/config/google"
 
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
@@ -64,14 +64,14 @@ func GetNextEvent(max int64, truncate *string) {
 	} else {
 		for _, item := range events.Items {
 			date := item.Start.DateTime
-			if date == "" {
 
-				date = item.Start.Date
+			if date != "" {
+				parsed, _ := time.Parse(time.RFC3339, date)
+
+				fmt.Printf("%v:%02d %."+*truncate+"s", parsed.Hour(), parsed.Minute(), item.Summary)
+
+				break
 			}
-
-			parsed, _ := time.Parse(time.RFC3339, date)
-
-			fmt.Printf("%v:%02d %."+*truncate+"s", parsed.Hour(), parsed.Minute(), item.Summary)
 		}
 	}
 }
