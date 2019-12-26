@@ -9,9 +9,11 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 	"time"
 	googleCredentials "xcal/config/google"
 
+	"github.com/dustin/go-humanize"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/calendar/v3"
@@ -68,7 +70,11 @@ func GetNextEvent(max int64, truncate *string) {
 			if date != "" {
 				parsed, _ := time.Parse(time.RFC3339, date)
 
-				fmt.Printf("%v:%02d %."+*truncate+"s", parsed.Hour(), parsed.Minute(), item.Summary)
+				delay := fmt.Sprintf("%s", humanize.Time(parsed))
+				delay = strings.Replace(delay, " from now", "", -1)
+				title := fmt.Sprintf("%."+*truncate+"s", item.Summary)
+
+				fmt.Printf("(in %s) %s", delay, title)
 
 				break
 			}
