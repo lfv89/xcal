@@ -62,15 +62,15 @@ func GetNextEvent(max int64, truncate *string) {
 	}
 
 	if len(events.Items) == 0 {
-		fmt.Printf("--:-- Nothing")
+		fmt.Printf("--:-- nothing coming up")
 	} else {
 		for _, item := range events.Items {
 			date := item.Start.DateTime
+			parsedDate, _ := time.Parse(time.RFC3339, date)
 
-			if date != "" {
-				parsed, _ := time.Parse(time.RFC3339, date)
+			if date != "" && time.Now().Before(parsedDate) {
 
-				delay := fmt.Sprintf("%s", humanize.Time(parsed))
+				delay := fmt.Sprintf("%s", humanize.Time(parsedDate))
 				delay = strings.Replace(delay, " from now", "", -1)
 				title := fmt.Sprintf("%."+*truncate+"s", item.Summary)
 
