@@ -17,12 +17,12 @@ type GoogleCredentialsWrapper struct {
 func Get() *GoogleCredentialsWrapper {
 	return &GoogleCredentialsWrapper{
 		Installed: GoogleCredentials{
-			"687759170793-sgl4fsv331ipq5639dm25maj0vqodge1.apps.googleusercontent.com",
-			"quickstart-1572131343445",
+			"390377400515-3lrvsilaip3mi903stbj3mtcobnofa73.apps.googleusercontent.com",
+			"xcal-cli",
 			"https://accounts.google.com/o/oauth2/auth",
 			"https://oauth2.googleapis.com/token",
 			"https://www.googleapis.com/oauth2/v1/certs",
-			"dHzrSU3ZqyQFPDyNajBrqAfb",
+			"iU_7gsnC8P8nnOY1uxYDagNs",
 			[]string{"urn:ietf:wg:oauth:2.0:oob", "http://localhost"},
 		},
 	}
