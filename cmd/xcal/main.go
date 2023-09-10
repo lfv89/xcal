@@ -4,7 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	googleCalendar "xcal/internal/google"
+
+	googleCalendar "github.com/lfv89/xcal/internal/google"
 )
 
 var max int64 = 5

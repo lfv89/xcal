@@ -11,7 +11,8 @@ import (
 	"runtime"
 	"strings"
 	"time"
-	googleCredentials "xcal/config/google"
+
+	googleCredentials "github.com/lfv89/xcal/config/google"
 
 	"github.com/dustin/go-humanize"
 	"golang.org/x/oauth2"
